@@ -80,7 +80,7 @@ def syslog_server_loop():
                 pass
         registrar_log(addr[0], severidad, msg)
 
-# ==========================================
+        # ==========================================
 # 3. INTERFAZ GRÁFICA PRINCIPAL (GUI)
 # ==========================================
 class AppBetaRedes(tk.Tk):
@@ -171,7 +171,8 @@ class AppBetaRedes(tk.Tk):
     def build_syslog_view(self):
         tk.Button(self.tab_logs, text="Refrescar Logs Normalizados (0-7)", command=self.load_syslogs).pack(pady=5)
         self.tree_logs = ttk.Treeview(self.tab_logs, columns=("ID", "Fecha/Hora", "IP Origen", "Severidad", "Mensaje"), show="headings")
-        for col in ("ID", "Fecha/Hora", "IP Origen", "Severidad", "Mensaje"): self.tree_logs.heading(col, text=col)
+        for col in ("ID", "Fecha/Hora", "IP Origen", "Severidad", "Mensaje"):
+            self.tree_logs.heading(col, text=col)
         self.tree_logs.pack(fill="both", expand=True, padx=10, pady=10)
 
     def load_syslogs(self):
@@ -241,7 +242,9 @@ class AppBetaRedes(tk.Tk):
             except Exception as e: self.txt_ssh_output.insert(tk.END, f"\n[ERROR]: {e}\n")
             finally: client.close()
         threading.Thread(target=ssh_thread).start()
-
+        # ==========================================
+# 4. EJECUCIÓN PRINCIPAL
+# ==========================================
 if __name__ == "__main__":
     init_db()
     threading.Thread(target=syslog_server_loop, daemon=True).start()
