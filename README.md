@@ -37,3 +37,34 @@ noc-syslog-inteligente/
 │   └── ENTREGABLE_CORTE2.md   # Informe del Corte 2 (v0.2.0)
 └── docs/
     └── architecture.md        # Especificación de arquitectura y requisitos
+
+# 🛡️ Smart NOC Syslog - Enterprise Operations Suite v4.0
+
+Plataforma centralizada de gestión de redes, monitoreo en tiempo real, respuesta automatizada a incidentes y ciberseguridad forense, desarrollada en Python (`Tkinter`).
+
+---
+
+## 🚀 Características Principales (v4.0)
+
+* **🟢 Monitoreo Dinámico en Tiempo Real:** Visualización del estado operativo de dispositivos de red (`SW-CORE-01`, `RTR-BPL-02`, `FW-EDGE-01`, `AP-PISO2-05`) con bloqueo automático de estados ante fallas activas para evitar duplicidad de tickets.
+* **📡 Colector Syslog RFC:** Clasificación de eventos por niveles de severidad (`0` al `7`), métricas KPI en vivo e integración de notificaciones instantáneas vía **Telegram Bot API**.
+* **🔒 Seguridad Criptográfica (`AUDIT-SHA256`):** Registro de auditoría forense inalterable mediante un sistema de hashes encadenados (*Blockchain-lite*).
+* **🛂 Control de Acceso Basado en Roles (RBAC):** Segregación de privilegios por perfil (*Operador L1*, *Ingeniero L2* y *Administrador*) bajo el principio de mínimo privilegio.
+* **🛠️ Consola SSH & Troubleshooting Blindado:** Ejecución simulada de comandos de diagnóstico (`ping`, `tracert`, `show ip bgp summary`, `show arp`) vinculada a tickets abiertos, con sanitización estricta contra ataques de inyección de comandos.
+* **🤖 Asistente Cognitivo IA & RCA:** Generación automática de Análisis de Causa Raíz (RCA) en la bitácora de cada incidente y chat interactivo para consultar el estado de la infraestructura.
+
+---
+
+## ⚙️ Modelo de Gobernanza Híbrida
+
+1. **Incidentes Críticos (Niveles 0 – 4):** El sistema bloquea el dispositivo en monitoreo, abre un ticket en estado `ABIERTO (Requiere Humano)`, genera un diagnóstico preliminar de causa raíz y envía una alerta prioritaria a Telegram.
+2. **Eventos de Rutina (Niveles 5 – 7):** El automatismo abre y cierra el ticket de forma autónoma (`RESUELTO & CERRADO`), notificando por Telegram sin interrumpir la operación humana.
+
+---
+
+## 📦 Instalación y Ejecución
+
+1. **Clonar el repositorio:**
+   ```bash
+   git clone [https://github.com/0Stif0/noc-syslog-inteligente.git](https://github.com/0Stif0/noc-syslog-inteligente.git)
+   cd noc-syslog-inteligente
